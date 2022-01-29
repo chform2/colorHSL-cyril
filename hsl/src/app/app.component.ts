@@ -43,19 +43,19 @@ export class AppComponent {
   }
 
   output():void{
-    this.primaryHsl = `hsl(${this.roundUp(this.color)}, ${this.saturation}%, ${this.lightness}%)`;
-    this.analogousHsl = `hsl(${this.roundUp(this.color+30)}, ${this.saturation}%, ${this.lightness}%)`;
-    this.complementaryHsl = `hsl(${this.roundUp(this.color+180)}, ${this.saturation}%, ${this.lightness}%)`;
+    this.primaryHsl = `hsl(${this.roundUp(this.color)}, ${this.saturation}%, ${this.lightness}%);`;
+    this.analogousHsl = `hsl(${this.roundUp(this.color+30)}, ${this.saturation}%, ${this.lightness}%);`;
+    this.complementaryHsl = `hsl(${this.roundUp(this.color+180)}, ${this.saturation}%, ${this.lightness}%);`;
   }
 
   /**
    * Method for calc and apply colors to the scares and change output div content
    */
   calc(): void {
-    this.primary = `background-color: hsl(${this.roundUp(this.color)}, ${this.saturation}%, ${this.lightness}%);`;
-    this.analogous = `background-color: hsl(${this.roundUp(this.color+30)}, ${this.saturation}%, ${this.lightness}%);`;
-    this.complementary = `background-color: hsl(${this.roundUp(this.color+180)}, ${this.saturation}%, ${this.lightness}%);`;
     this.output();
+    this.primary = `background-color: ${this.primaryHsl}`;
+    this.analogous = `background-color: ${this.analogousHsl}`;
+    this.complementary = `background-color: ${this.complementaryHsl}`;
   }
 
 
@@ -69,17 +69,19 @@ export class AppComponent {
    * @param event 
    */
   onKey(event: any):void {
-    switch (event.target.className) {
+    let target = event.target;
+    let value = target.value;
+    switch (target.className) {
       case 'color':
-        this.color = (event.target.value<=this.minColor || event.target.value>=this.maxColor) ?  this.invalidValue(event.target, this.color) : event.target.value;
+        this.color = (value<this.minColor || value>=this.maxColor) ?  this.invalidValue(target, this.color) : value;
         this.calc();
         break;
       case 'saturation':
-        this.saturation = (event.target.value<=this.minSaturation || event.target.value>=this.maxSaturation) ? this.invalidValue(event.target, this.saturation) : event.target.value;
+        this.saturation = (value<this.minSaturation || value>=this.maxSaturation) ? this.invalidValue(target, this.saturation) : value;
         this.calc();
         break;
       case 'lightness':
-        this.lightness = (event.target.value<=this.minLightness || event.target.value>=this.maxLightness) ? this.invalidValue(event.target, this.lightness) : event.target.value;
+        this.lightness = (value<this.minLightness || value>=this.maxLightness) ? this.invalidValue(target, this.lightness) : value;
         this.calc();
         break;
       default:
@@ -90,6 +92,5 @@ export class AppComponent {
   ngOnInit() {
     this.calc();
   }
-
 
 }
