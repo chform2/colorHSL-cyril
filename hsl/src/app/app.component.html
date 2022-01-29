@@ -9,16 +9,16 @@
   <!-- cursor input and input text -->
   <div class="cursorList">
     <p class="scare1" title="Hue">
-      <input type="range" (change)="onKey($event)" min="0" max="360" attr.value="{{color}}" class="color">
-      <input type="number" min="0" max="360" attr.value="{{saturation}}" (change)="onKey($event)" class="color"/>
+      <input type="range" maxlength="3" (change)="onKey($event)" min="{{minColor}}" max="{{maxColor}}" attr.value="{{color}}" class="color">
+      <input type="number" maxlength="3" min="{{minColor}}" max="{{maxColor}}" value="{{color}}" (change)="onKey($event)" class="color"/>
     </p>
     <p class="scare2" title="Saturation">
-      <input type="range" (change)="onKey($event)" min="0" max="100" attr.value="{{saturation}}" class="saturation">
-      <input type="number" min="0" max="100" attr.value="{{saturation}}" (change)="onKey($event)" class="saturation"/>
+      <input type="range" maxlength="3" (change)="onKey($event)" min="{{minSaturation}}" max="{{maxSaturation}}" value="{{saturation}}" class="saturation">
+      <input type="number" maxlength="3" min="{{minSaturation}}" max="{{maxSaturation}}" value="{{saturation}}" (change)="onKey($event)" class="saturation"/>
     </p>
     <p class="scare3" title="Lightness">
-      <input type="range" (change)="onKey($event)" min="0" max="100" attr.value="{{lightness}}" class="lightness">
-      <input type="number" min="0" max="100" attr.value="{{lightness}}" (change)="onKey($event)" class="lightness"/>
+      <input type="range" maxlength="3" (change)="onKey($event)" min="{{minLightness}}" max="{{maxLightness}" value="{{lightness}}" class="lightness">
+      <input type="number" maxlength="3" min="{{minLightness}}" max="{{maxLightness}" value="{{lightness}}" (change)="onKey($event)" class="lightness"/>
     </p>
   </div>
 </div>

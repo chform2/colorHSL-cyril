@@ -59,9 +59,8 @@ export class AppComponent {
   }
 
 
-  invalidValue(obj:any, value:number):number{
-    alert("Invalid value");
-    obj.value = value;
+  resetValue(target:any, value:number):number{
+    target.value = value;
     return value;
   }
   /**
@@ -71,15 +70,15 @@ export class AppComponent {
   onKey(event: any):void {
     switch (event.target.className) {
       case 'color':
-        this.color = (event.target.value<=this.minColor || event.target.value>=this.maxColor) ?  this.invalidValue(event.target, this.color) : event.target.value;
+        this.color = (event.target.value<=this.minColor || event.target.value>=this.maxColor) ? this.resetValue(event.target, this.color) : event.target.value;
         this.calc();
         break;
       case 'saturation':
-        this.saturation = (event.target.value<=this.minSaturation || event.target.value>=this.maxSaturation) ? this.invalidValue(event.target, this.saturation) : event.target.value;
+        this.color = (event.target.value<=this.minSaturation || event.target.value>=this.maxSaturation) ? this.resetValue(event.target, this.saturation) : event.target.value;
         this.calc();
         break;
       case 'lightness':
-        this.lightness = (event.target.value<=this.minLightness || event.target.value>=this.maxLightness) ? this.invalidValue(event.target, this.lightness) : event.target.value;
+        this.color = (event.target.value<=this.minLightness || event.target.value>=this.maxLightness) ? this.resetValue(event.target, this.lightness) : event.target.value;
         this.calc();
         break;
       default:
