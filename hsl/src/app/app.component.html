@@ -1,0 +1,32 @@
+<img src="../assets/author.png" alt="Author" title="Author"/>
+<div class="root" (ng-init)="calc()">
+  <!-- scare objects -->
+  <div class="scareList">
+    <div class="scare1" title="primaire" attr.style="{{primary}}"></div>
+    <div class="scare2" title="analogue" attr.style="{{analogous}}"></div>
+    <div class="scare3" title="complémentaire" attr.style="{{complementary}}"></div>
+  </div>
+  <!-- cursor input and input text -->
+  <div class="cursorList">
+    <p class="scare1" title="Hue">
+      <input type="range" (change)="onKey($event)" min="0" max="360" attr.value="{{color}}" class="color">
+      <input type="number" min="0" max="360" attr.value="{{saturation}}" (change)="onKey($event)" class="color"/>
+    </p>
+    <p class="scare2" title="Saturation">
+      <input type="range" (change)="onKey($event)" min="0" max="100" attr.value="{{saturation}}" class="saturation">
+      <input type="number" min="0" max="100" attr.value="{{saturation}}" (change)="onKey($event)" class="saturation"/>
+    </p>
+    <p class="scare3" title="Lightness">
+      <input type="range" (change)="onKey($event)" min="0" max="100" attr.value="{{lightness}}" class="lightness">
+      <input type="number" min="0" max="100" attr.value="{{lightness}}" (change)="onKey($event)" class="lightness"/>
+    </p>
+  </div>
+</div>
+<!-- output -->
+<div class="output">
+  <p>&colon;root&lcub;</p>
+  <p class="mr-15">--clr-primary: {{primaryHsl}};</p>
+  <p class="mr-15">--clr-secondary: {{analogousHsl}};</p>
+  <p class="mr-15">--clr-tertiary: {{complementaryHsl}};</p>
+  <p>&rcub;</p>
+</div>
